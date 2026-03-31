@@ -1,40 +1,43 @@
-# Any2PDF Merger 📄✨
+# Any2PDF Merger
 
-**Any2PDF Merger**, bilgisayarınızdaki farklı türdeki sayısız dosyayı **hiçbir kalite veya görsel kaybı olmadan** tam sayfa olarak saniyeler içerisinde PDF’e dönüştüren ve tek bir dosya altında "sıralı olarak" birleştiren harika bir Python masaüstü uygulamasıdır.
+A Python-based desktop application designed to convert various file formats into a single, merged PDF document. Built with `tkinter` for the user interface.
 
-Özellikle yazılımcılar, araştırmacılar, makine öğrenmesi/derin öğrenme öğrencileri ve farklı formatlardaki ders notlarını tek bir PDF'te toplamak isteyenler için birebirdir.
+## Supported Formats & Engine
 
-## Özellikler
+- **Jupyter Notebook (`.ipynb`) & HTML**: Converted natively using `nbconvert` and headless Microsoft Edge PDF rendering, preserving cells, plots, and graphical layouts.
+- **Images (PNG, JPG, BMP, etc.)**: Embedded directly into the PDF at their native resolution using `reportlab`, avoiding rasterization loss or compression artifacts.
+- **Office Documents (DOCX, PPTX, XLSX)**: Converted silently via `comtypes` (requires Microsoft Office).
+- **Text & Source Code**: Plain text and code files (.py, .cpp, .json) are rendered using a text-to-pdf engine parsing standard word wraps.
 
-- **Jupyter Notebook (`.ipynb`) Tam Destek**: Çıktılar, grafikler, neural network loss haritaları, markdown formülleri ve output hücrelerini hiçbir detayı atlamadan orijinal web kalitesinde renderlar.
-- **Web Sayfası Desteği (`.html`, `.htm`)**: Görünmez bir Microsoft Edge motoru arka planda HTML dosyalarınızı açar ve kusursuz baskı kalitesinde PDF formatına işler. Kalite bozulması veya kesilme yaşanmaz!
-- **Görseller İçin %100 Piksel Uyumu**: Orijinal `PNG, JPG, BMP` vb. görseller kırpılmadan ve hiçbir sıkıştırma (compression) kaybı yaşanmadan direkt kendi orijinal piksel boyutunda içe aktarılır.
-- **Tüm Office/Metin Dosyaları Desteklenir**: `DOCX, PPTX, XLSX`, Python/C++ kod dosyalarınızı tek tıkla topluca sürükleyip PDF'in içine yerleştirebilirsiniz.
-- **Sıralama Arayüzü**: Sürükleyip bıraktıktan sonra uygulama içindeki oklar sayesinde sayfaların çıktı sırasını dilediğiniz gibi ayarlayabilirsiniz. 
-- **Modern ve Sade Arayüz**: Dark-mode ağırlıklı, kullanımı çocuk oyuncağı olan oldukça şık arayüz (Tkinter/Windows 11 API).
+## Requirements
 
-## 🛠️ Kurulum ve Ön Gereksinimler
+- Python 3.x
+- **Python Packages**: `Pillow`, `pypdf`, `reportlab`, `nbformat`, `nbconvert`, `comtypes`
+- **System**: Microsoft Edge (for `.ipynb`/HTML rendering) and Microsoft Office (for Office formats).
 
-Projenin bağımlılıklarını kurmak için bir terminal açın ve aşağıdaki repoyu bilgisayarınıza indirip klasöre girerek şu komutu çalıştırın:
+## Installation
 
-```cmd
-pip install Pillow pypdf reportlab nbformat nbconvert comtypes
-```
+1. Clone the repository:
+   ```cmd
+   git clone https://github.com/senademirbas/Any2PDF-Merger.git
+   cd Any2PDF-Merger
+   ```
 
-*Not: HTML ve `.ipynb` özelliklerinin kusursuz çalışabilmesi için işletim sisteminizde Microsoft Edge'in yüklü olması yeterlidir (Chrome tabanlı). Office dosyaları (`.docx`, `.pptx`) işlemleri için ise sistemde Microsoft Office'in yüklü olması gerekir.*
+2. Install the dependencies:
+   ```cmd
+   pip install Pillow pypdf reportlab nbformat nbconvert comtypes
+   ```
 
-## Nasıl Kullanılır?
+## Usage
 
-Sadece aşağıdaki komutu çalıştırarak uygulamayı açmanız yeterlidir:
+Simply run the application script in your terminal:
 
 ```cmd
 python pdf_birlestirici.py
 ```
-Açılan pencerede:
-1. `+ Dosya Ekle` butonuyla PDF'e dahil edilecek evrak/görsel/kod/jupyter notlarınızı seçin.
-2. Sırasını değiştirmek istediklerinizi yan oklarla organize edin.
-3. ` PDF Olarak Birleştir` butonuna basın! Sadece birkaç saniye sürecek.
 
-## 🤝 Katkıda Bulunma
-Her türlü öneri, hata çözümü (PR) ve geliştirmeye tamamen açıktır! Repoyu "Fork" yapıp istediğiniz gibi geliştirebilirsiniz.
+Use the interface to add files, adjust their merge order with the arrow buttons, and generate the final combined PDF document.
 
+## Contributing
+
+This project is completely open to suggestions, bug fixes, and improvements. Feel free to fork the repository, enhance the code, and submit pull requests. All contributions are welcome!
